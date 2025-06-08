@@ -15,6 +15,9 @@ func Seed() uint64 {
 
 func Shuffle[T any](seed uint64, slice []T) {
 	n := len(slice)
+	if n <= 1 {
+		return
+	}
 	for i := uint64(n - 1); i > 0; i-- {
 		seed = seed*1664525 + 1013904223
 		j := seed % (i+1)
